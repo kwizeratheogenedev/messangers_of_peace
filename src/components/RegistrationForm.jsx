@@ -13,10 +13,10 @@ const RegistrationForm = () => {
         </div>
 
         <div className="bg-slate-50 p-8 md:p-10 rounded-2xl shadow-sm border border-slate-100">
-          <form 
-            name="registration" 
-            method="POST" 
-            data-netlify="true" 
+          <form
+            name="registration"
+            method="POST"
+            data-netlify="true"
             className="space-y-6"
             action="/?success=true"
           >
@@ -27,10 +27,10 @@ const RegistrationForm = () => {
               {/* Child Full Name */}
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-2">Child Full Name *</label>
-                <input 
-                  type="text" 
-                  name="child_name" 
-                  required 
+                <input
+                  type="text"
+                  name="child_name"
+                  required
                   className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-scout-blue focus:border-scout-blue transition-colors bg-white"
                   placeholder="Enter full name"
                 />
@@ -38,12 +38,12 @@ const RegistrationForm = () => {
 
               {/* Age */}
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">Age * (Min 14)</label>
-                <input 
-                  type="number" 
-                  name="age" 
-                  min="14" 
-                  required 
+                <label className="block text-sm font-medium text-slate-700 mb-2">Age </label>
+                <input
+                  type="number"
+                  name="age"
+                  min="14"
+                  required
                   className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-scout-blue focus:border-scout-blue transition-colors bg-white"
                   placeholder="Enter age"
                 />
@@ -54,10 +54,10 @@ const RegistrationForm = () => {
               {/* Parent/Guardian Name */}
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-2">Parent/Guardian Name *</label>
-                <input 
-                  type="text" 
-                  name="parent_name" 
-                  required 
+                <input
+                  type="text"
+                  name="parent_name"
+                  required
                   className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-scout-blue focus:border-scout-blue transition-colors bg-white"
                   placeholder="Enter parent's full name"
                 />
@@ -66,10 +66,10 @@ const RegistrationForm = () => {
               {/* Phone Number */}
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-2">Phone Number *</label>
-                <input 
-                  type="tel" 
-                  name="phone" 
-                  required 
+                <input
+                  type="tel"
+                  name="phone"
+                  required
                   className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-scout-blue focus:border-scout-blue transition-colors bg-white"
                   placeholder="+250 7XX XXX XXX"
                 />
@@ -80,9 +80,9 @@ const RegistrationForm = () => {
               {/* Email Address */}
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-2">Email Address</label>
-                <input 
-                  type="email" 
-                  name="email" 
+                <input
+                  type="email"
+                  name="email"
                   className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-scout-blue focus:border-scout-blue transition-colors bg-white"
                   placeholder="optional@example.com"
                 />
@@ -91,8 +91,8 @@ const RegistrationForm = () => {
               {/* Program Selection */}
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-2">Primary Program Selection *</label>
-                <select 
-                  name="program" 
+                <select
+                  name="program"
                   required
                   className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-scout-blue focus:border-scout-blue transition-colors bg-white appearance-none"
                 >
@@ -111,17 +111,17 @@ const RegistrationForm = () => {
             {/* Message */}
             <div>
               <label className="block text-sm font-medium text-slate-700 mb-2">Message (Optional)</label>
-              <textarea 
-                name="message" 
-                rows="4" 
+              <textarea
+                name="message"
+                rows="4"
                 className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-scout-blue focus:border-scout-blue transition-colors bg-white resize-none"
                 placeholder="Any special notes or health conditions we should know about?"
               ></textarea>
             </div>
 
             <div className="text-center pt-4">
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 className="px-10 py-4 bg-scout-blue text-white font-bold rounded-full hover:bg-scout-dark transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1 w-full sm:w-auto"
               >
                 Submit Registration
