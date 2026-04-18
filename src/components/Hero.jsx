@@ -1,14 +1,16 @@
 import React from 'react';
 import { Typewriter } from 'react-simple-typewriter';
+import heroBg from "../assets/Hero1.png";
 
 const Hero = () => {
   return (
     <section id="home" className="relative pt-20 pb-32 flex items-center justify-center min-h-[90vh]">
-      {/* Background with overlay */}
-      <div 
-        className="absolute inset-0 z-0 bg-scout-dark"
+      {/* Background with image + overlay */}
+      <div
+        className="absolute inset-0 z-0 bg-scout-dark bg-cover bg-center"
+        style={{ backgroundImage: `url(${heroBg})` }}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-scout-dark to-scout-blue opacity-90"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-scout-dark to-scout-dark opacity-60"></div>
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white mt-10">
@@ -28,7 +30,7 @@ const Hero = () => {
           </span>
         </h1>
         
-        <p className="mt-6 text-xl md:text-2xl max-w-3xl mx-auto font-light mb-10 opacity-90">
+        <p className="mt-6 text-xl md:text-2xl max-w-3xl mx-auto font-extralight mb-10 opacity-90">
         Empowering the next generation through leadership, culture, talent, and strong values. Messengers of Peace nurtures responsible, confident, and purpose-driven youth ready to transform their communities and shape a brighter future.
         </p>
 
