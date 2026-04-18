@@ -19,7 +19,7 @@ const Benefits = () => {
   ];
 
   return (
-    <section className="py-20 bg-scout-dark text-white relative overflow-hidden">
+    <section id="benefits" className="py-20 bg-scout-dark text-white relative overflow-hidden">
       {/* Decorative background circle */}
       <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full bg-scout-blue opacity-50 blur-3xl"></div>
       <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-64 h-64 rounded-full bg-yellow-500 opacity-20 blur-3xl"></div>

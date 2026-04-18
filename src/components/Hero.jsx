@@ -9,8 +9,6 @@ const Hero = () => {
         className="absolute inset-0 z-0 bg-scout-dark"
       >
         <div className="absolute inset-0 bg-gradient-to-r from-scout-dark to-scout-blue opacity-90"></div>
-        {/* Placeholder for actual background image */}
-        <div className="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center"></div>
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white mt-10">
@@ -31,7 +29,7 @@ const Hero = () => {
         </h1>
         
         <p className="mt-6 text-xl md:text-2xl max-w-3xl mx-auto font-light mb-10 opacity-90">
-          Holiday and youth development programs in English, French, Kiswahili, Traditional & Modern Dance.
+        Empowering the next generation through leadership, culture, talent, and strong values. Messengers of Peace nurtures responsible, confident, and purpose-driven youth ready to transform their communities and shape a brighter future.
         </p>
 
         <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8">

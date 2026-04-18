@@ -1,6 +1,5 @@
 import React from 'react';
-import { Facebook, Twitter, Instagram, Youtube } from 'lucide-react';
-import logo from '../assets/Logo_transparent.png'
+import { Facebook, Twitter, Instagram, Youtube, Shield } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -10,8 +9,10 @@ const Footer = () => {
           {/* Logo & About */}
           <div className="col-span-1 md:col-span-1">
             <div className="flex items-center gap-4 mb-6 cursor-pointer hover:opacity-90 transition-opacity">
-              <img src={logo} alt="Messengers of Peace Logo" className="w-20 h-20 md:w-24 md:h-24 object-contain drop-shadow-lg" />
-              <span className="font-bold text-xl">
+              <div className="w-16 h-16 md:w-20 md:h-20 bg-yellow-400 text-scout-dark rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg">
+                <Shield size={40} />
+              </div>
+              <span className="font-bold text-lg md:text-xl">
                 Messengers of Peace
               </span>
             </div>

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
-import logo from '../assets/Logo_transparent.png'
+import { Menu, X, Shield } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,8 +17,9 @@ const Navbar = () => {
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
     { name: 'Programs', href: '#programs' },
+    { name: 'Benefits', href: '#benefits' },
     { name: 'Schedule', href: '#schedule' },
-    { name: 'Join Us', href: '#join' },
+    // { name: 'Join Us', href: '#join' },
     { name: 'Contact', href: '#contact' },
   ];
 
@@ -31,9 +31,11 @@ const Navbar = () => {
         <div className="flex justify-between h-24">
           <div className="flex items-center">
             {/* Logo */}
-            <a href="#home" className="flex items-center gap-3">
-              <img src={logo} alt="Messengers of Peace Logo" className="w-16 h-16 md:w-20 md:h-20 object-contain hover:scale-105 transition-transform drop-shadow-md" />
-              <span className="font-bold text-xl text-scout-blue hidden sm:block">
+            <a href="#home" className="flex items-center gap-2">
+              <div className="w-12 h-12 md:w-14 md:h-14 bg-scout-blue text-white rounded-lg flex items-center justify-center hover:scale-105 transition-transform shadow-md">
+                <Shield size={28} />
+              </div>
+              <span className="font-bold text-lg md:text-xl text-scout-blue hidden sm:block">
                 Messengers of Peace
               </span>
             </a>
