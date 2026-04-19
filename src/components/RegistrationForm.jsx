@@ -1,48 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const RegistrationForm = () => {
   const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError('');
-
-    const form = e.target;
-    const formData = new FormData(form);
-
-    try {
-      // For local development, show success immediately
-      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-        console.log('Form data (local dev):', Object.fromEntries(formData));
-        setSubmitted(true);
-        form.reset();
-        setTimeout(() => setSubmitted(false), 5000);
-      } else {
-        // For Netlify deployment, submit to Netlify
-        const response = await fetch('/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: new URLSearchParams(formData).toString(),
-        });
-
-        if (response.ok) {
-          setSubmitted(true);
-          form.reset();
-          setTimeout(() => setSubmitted(false), 5000);
-        } else {
-          setError('Submission failed. Please try again.');
-        }
-      }
-    } catch (err) {
-      setError('An error occurred. Please try again.');
-      console.error('Form submission error:', err);
-    } finally {
-      setLoading(false);
+  // Check if form was just submitted (from URL redirect)
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('success') === 'true') {
+      setSubmitted(true);
+      // Clear URL params
+      window.history.replaceState({}, document.title, window.location.pathname);
+      // Hide message after 5 seconds
+      setTimeout(() => setSubmitted(false), 5000);
     }
-  };
+  }, []);
 
   return (
     <section id="join" className="py-20 bg-white">
@@ -65,21 +36,12 @@ const RegistrationForm = () => {
             </div>
           )}
 
-          {/* Error Message Alert */}
-          {error && (
-            <div className="mb-6 p-4 bg-red-50 border-2 border-red-200 rounded-xl shadow-sm">
-              <p className="text-red-800 font-semibold text-center">
-                ✗ {error}
-              </p>
-            </div>
-          )}
-
           <form
             name="registration"
             method="POST"
             data-netlify="true"
             netlify-honeypot="bot-field"
-            onSubmit={handleSubmit}
+            action="/?success=true"
             className="space-y-6"
           >
             {/* Honeypot field for spam protection (hidden) */}
@@ -186,10 +148,9 @@ const RegistrationForm = () => {
             <div className="text-center pt-4">
               <button
                 type="submit"
-                disabled={loading}
-                className="px-10 py-4 bg-scout-blue text-white font-bold rounded-full hover:bg-scout-dark transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1 w-full sm:w-auto disabled:opacity-60 disabled:cursor-not-allowed"
+                className="px-10 py-4 bg-scout-blue text-white font-bold rounded-full hover:bg-scout-dark transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1 w-full sm:w-auto"
               >
-                {loading ? 'Submitting...' : 'Submit Registration'}
+                Submit Registration
               </button>
             </div>
           </form>
