@@ -14,20 +14,27 @@ const RegistrationForm = () => {
     const formData = new FormData(form);
 
     try {
-      // Send form data to Netlify
-      const response = await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData).toString(),
-      });
-
-      if (response.ok) {
+      // For local development, show success immediately
+      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        console.log('Form data (local dev):', Object.fromEntries(formData));
         setSubmitted(true);
         form.reset();
-        // Clear success message after 5 seconds
         setTimeout(() => setSubmitted(false), 5000);
       } else {
-        setError('Submission failed. Please try again.');
+        // For Netlify deployment, submit to Netlify
+        const response = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(formData).toString(),
+        });
+
+        if (response.ok) {
+          setSubmitted(true);
+          form.reset();
+          setTimeout(() => setSubmitted(false), 5000);
+        } else {
+          setError('Submission failed. Please try again.');
+        }
       }
     } catch (err) {
       setError('An error occurred. Please try again.');
