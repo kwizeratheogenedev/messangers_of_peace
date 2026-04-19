@@ -1,6 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const RegistrationForm = () => {
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+
+    const form = e.target;
+    const formData = new FormData(form);
+
+    try {
+      // Send form data to Netlify
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString(),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        form.reset();
+        // Clear success message after 5 seconds
+        setTimeout(() => setSubmitted(false), 5000);
+      } else {
+        setError('Submission failed. Please try again.');
+      }
+    } catch (err) {
+      setError('An error occurred. Please try again.');
+      console.error('Form submission error:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <section id="join" className="py-20 bg-white">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -13,13 +49,34 @@ const RegistrationForm = () => {
         </div>
 
         <div className="bg-slate-50 p-8 md:p-10 rounded-2xl shadow-sm border border-slate-100">
+          {/* Success Message Alert */}
+          {submitted && (
+            <div className="mb-6 p-4 bg-green-50 border-2 border-green-200 rounded-xl shadow-sm animate-pulse">
+              <p className="text-green-800 font-semibold text-center">
+                ✓ Thank you! Your registration was successful. We'll contact you soon.
+              </p>
+            </div>
+          )}
+
+          {/* Error Message Alert */}
+          {error && (
+            <div className="mb-6 p-4 bg-red-50 border-2 border-red-200 rounded-xl shadow-sm">
+              <p className="text-red-800 font-semibold text-center">
+                ✗ {error}
+              </p>
+            </div>
+          )}
+
           <form
             name="registration"
             method="POST"
             data-netlify="true"
+            netlify-honeypot="bot-field"
+            onSubmit={handleSubmit}
             className="space-y-6"
-            action="/?success=true"
           >
+            {/* Honeypot field for spam protection (hidden) */}
+            <input type="hidden" name="bot-field" />
             {/* Required hidden input for Netlify */}
             <input type="hidden" name="form-name" value="registration" />
 
@@ -122,9 +179,10 @@ const RegistrationForm = () => {
             <div className="text-center pt-4">
               <button
                 type="submit"
-                className="px-10 py-4 bg-scout-blue text-white font-bold rounded-full hover:bg-scout-dark transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1 w-full sm:w-auto"
+                disabled={loading}
+                className="px-10 py-4 bg-scout-blue text-white font-bold rounded-full hover:bg-scout-dark transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1 w-full sm:w-auto disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                Submit Registration
+                {loading ? 'Submitting...' : 'Submit Registration'}
               </button>
             </div>
           </form>
